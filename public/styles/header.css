@@ -1,0 +1,24 @@
+.navbar{
+    background-color: #ff882c;
+    height: 10vh;
+}
+
+img{
+    height: 8vh;
+}
+
+
+#home{
+    font-family: "Fraunces", serif;
+    font-variation-settings: "WONK" 1;
+    font-weight: 400;
+    color: white;
+    font-size: 1.5rem;
+    padding-right: 5vw;
+}
+
+body{
+    background-color: #587a33;
+    height: 100vh;
+    width: 100vw;
+}

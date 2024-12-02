@@ -1,0 +1,118 @@
+body{
+    background-color: rgb(24, 86, 40);
+    margin: 0px;
+    overflow: hidden;
+}
+
+#myVideo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: -1; /* Above the video but below content */
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    height: 100vh;
+    z-index: 1;
+    position: relative;
+    text-align: center;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0px;
+}
+
+#celtic{
+    filter: brightness(0) invert(1);
+    height: 10vh;
+    position: relative;
+    top: 30px;
+}
+
+#welcome {
+    color: white;
+    font-family: "Kumbh Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+    font-size: 1rem;
+    margin: 0px;
+    justify-self: end;
+    letter-spacing: 5px;
+    word-spacing: 2px;
+}
+
+#heading{
+    font-family: "Fraunces", serif;
+    font-variation-settings: "WONK" 1;
+    font-weight: 400;
+    color: #ffafda;
+    font-size: 7rem;
+    width: auto;
+    text-align: center;
+    line-height: 1.2;
+    margin: 10px 0px;
+    letter-spacing: 2px;
+}
+
+#flow{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+    letter-spacing: 2px;
+}
+
+form button{
+    background: none;
+    border: 2px solid white;
+    color: white; /* Sets the text color */
+    font-family: "Kumbh Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings: "YOPQ" 300;
+    font-size: 0.8rem;
+    border-radius: 5px; /* Adds rounded corners (optional) */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    width: 168px;
+    height: 34px;
+    letter-spacing: 3px;
+    position: relative;
+    top: -130px;
+}
+
+form button:hover{
+    background: #ffafda; /* Adds a fill color on hover (optional) */
+    color: white; /* Changes text color when hovered (optional) */
+    border: 2px solid #ffafda;
+}
+
+.container2 > h2{
+    width: 168px;
+}

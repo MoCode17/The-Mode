@@ -1,0 +1,83 @@
+body{
+    background-color: #587a33;
+}
+
+.page-name h1{
+    padding: 20px 40px;
+    
+}
+
+.page-name > h1{
+    color: white;
+    font-family: "Kumbh Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 24pt;
+}
+
+.a-grid{
+    margin-top: 40px;
+}
+
+.hidden{
+    display: none;
+}
+
+.grad{
+    background: radial-gradient(circle, rgb(45, 42, 42), rgb(17, 185, 226) );
+    color: white;
+}
+
+.card{
+    --bs-card-border-width: 0px;
+    border: solid 3px black;
+    --bs-card-border-radius: 10px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 40%);
+    background-color: #faf5e8;
+}
+
+.card-header:first-child{
+    border-radius: 6px 6px 0 0;
+    
+}
+
+.blog-detail{
+    width: 60%;
+    padding: 1rem 2rem;
+    background-color: #faf5e8;
+    border-radius: 14px;
+    border: 2px solid black;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 40%);
+}
+
+.blog-title{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 4rem;
+}
+
+.blog-src{
+    justify-self: end;
+}
+
+.content{
+    line-height: 1.6;
+    color: #333;
+}
+
+q {
+    font-style: italic;
+    color: #555;
+    quotes: "“" "”" "‘" "’";
+    text-align: center;
+    width: 10%;
+}
+
+q:before {
+    content: open-quote;
+}
+
+q:after {
+    content: close-quote;
+}

@@ -1,0 +1,79 @@
+.navbar{
+    background-color: #ff882c;
+    height: 10vh;
+}
+
+img{
+    height: 8vh;
+}
+
+
+#home{
+    font-family: "Fraunces", serif;
+    font-variation-settings: "WONK" 1;
+    font-weight: 400;
+    color: white;
+    font-size: 1.5rem;
+    padding-right: 5vw;
+}
+
+body{
+    overflow: hidden;
+}
+
+.index-body{
+    height: 90vh;
+    width: 100vw;
+    background: radial-gradient(circle, rgb(229, 38, 38), rgb(13, 255, 0));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.index-body > img{
+    height: 60vh;
+}
+
+.circle-links {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; /* The radius of the circular path */
+    height: 800px;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    position: absolute;
+    width: 150px; /* Adjust width of the link */
+    height: 30px; /* Adjust height of the link */
+    text-align: center;
+    line-height: 30px;
+    background-color: none;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Kumbh Sans", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 14pt;
+}
+
+.link1 { transform: rotate(0deg) translateY(-270px) rotate(0deg); }
+.link2 { transform: rotate(72deg) translateY(-380px) rotate(-72deg); }
+.link3 { transform: rotate(130deg) translateY(-420px) rotate(-130deg); }
+.link4 { transform: rotate(230deg) translateY(-420px) rotate(-230deg); }
+.link5 { transform: rotate(288deg) translateY(-380px) rotate(-288deg); }
+
+.link:hover {
+    background-color: #ff882c;
+}
+
+body{
+    overflow: hidden;
+}
