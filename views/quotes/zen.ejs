@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="d-flex justify-content-center align-items-center flex-column q-container" id="zen-container" style="height: 90vh; gap: 50px;">
+
+    <div class="quote-box w-75" id="zen-box">
+        <h3><%= zenQuote %></h3>
+        <p><%=  zenAuthor %></p>
+    </div>
+
+    <div class="generate-quote">
+        <form action="/quotes/zen" method="get">
+            <button type="submit" class="regen" id="zen-regen">Regenerate</button>
+        </form>
+    </div>
+
+</div>
+
+<%- include('../partials/footer.ejs') %>

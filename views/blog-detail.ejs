@@ -3,7 +3,7 @@
 <section>
     <div class="container justify-content-center mt-5 blog-detail">
         <h1 class="text-center blog-title"><%= blog.title %></h1>
-        <p class="text-end blog-src my-4"><strong>By <%= blog.author %></strong> on <%= blog.date.toLocaleDateString() %></p>
+        <p class="text-end blog-src my-4"><strong>By <%= blog.author %></strong> on <%= blog.created_at.toLocaleDateString() %></p>
         <div class="content">
             <p> 
                 <% let formattedContent = blog.content.replace(/“([^“]*)”/g, '<q>$1</q>'); %>

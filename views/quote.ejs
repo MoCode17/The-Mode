@@ -1,3 +1,39 @@
 <%- include('partials/header.ejs') %>
 
+<section class="quote">
+    <form class="wrld-gov" action="/index" method="get">
+        <% const categories = ['Business', 'Design', 'Zen', 'Programming', 'Anime']; %>
+        <% categories.forEach(category => { %>
+            <input type="submit" value="<%= category %>" formaction="/quotes/<%= category.toLowerCase() %>" class="quote-category" id="<%= category.toLowerCase() %>">
+        <% }) %>
+</form>
+</section>
+
+<script>
+    var animeElement = document.getElementById("anime");
+
+    if(animeElement){
+        var leftRight = [
+            {transform: "translateX(-5px)"},
+            {transform: "translateX(5px)"},
+            {transform: "translateY(-5px)"},
+            {transform: "translateY(5px)"},
+            {transform: "translateX(-5px)"}
+        ];
+        var timing = {
+        // keyframe options
+        duration: 5000,
+        direction: "alternate",
+        easing: "ease-in-out",
+        iterations: "Infinity"
+        }
+        const animation = animeElement.animate(leftRight, timing);
+        animation.play();
+    }
+    else{
+        console.error("Could not find element Anime");
+    }
+    
+</script>
+
 <%- include('partials/footer.ejs') %>

@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="d-flex justify-content-center align-items-center flex-column q-container" style="height: 90vh; gap: 50px;">
+
+    <div class="quote-box w-75">
+        <h3 id="anime-quote"><%= animeQuote %></h3>
+        <p id="anime-character"><%=  animeCharacter %></p>
+        <p id="anime-title"><%=  animeTitle %></p>
+    </div>
+
+    <div class="generate-quote">
+        <form action="/quotes/anime" method="get">
+            <button type="submit" id="regen">Regenerate</button>
+        </form>
+    </div>
+
+</div>
+
+<%- include('../partials/footer.ejs') %>
