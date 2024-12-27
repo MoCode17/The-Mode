@@ -31,6 +31,8 @@ app.get("/index", (req, res) => {
     res.render("index.ejs");
 });
 
+
+// Blog page
 app.get("/blog", async (req, res) => {
     try {
         const blogs = await db.query("SELECT * FROM blogs ORDER BY created_at DESC");  // Fetch all blogs from the database
@@ -97,11 +99,90 @@ app.get("/blog/:id", async (req, res) => {
     }
 });
 
-app.get("/book", (req, res) => {
-    res.render("book.ejs");
+// Book page
+app.get("/book", async (req, res) => {
+    // get list of isbn's to show covers for API
+    const result = await db.query("SELECT * FROM books;");
+
+    const booklist = result.rows;
+
+    res.render("book.ejs", { book: booklist});
 });
 
-// Quote API
+app.get("/book/:id", async (req, res) => {
+    // get id to use for query
+    const id = req.params.id;
+    // find the data of that book
+    const result = await db.query("SELECT * FROM books WHERE id=$1;", [id]);
+
+    const book = result.rows[0];
+
+    res.render("book-detail", { book: book });
+});
+
+function isValidISBN(isbn) {
+    // isbn must be string type
+    // length must be 10 or 13
+    let n = isbn.length; 
+    console.log(n);
+    if (n != 10 && n != 13){
+        return false;
+    }
+
+    // Computing weighted sum of  
+    // first 9 digits 
+    let sum = 0; 
+    if (n == 10){
+        for (let i = 0; i < 9; i++) 
+        { 
+            const digit = parseInt(isbn[i], 10);
+            if (isNaN(digit)) return false; // Ensure each character is a digit
+            sum += ((i + 1) * digit);
+        } 
+        console.log(sum);
+        const checkDigit = isbn[9] === "X" ? 10 : parseInt(isbn[9], 10);
+        if (isNaN(checkDigit)) return false;
+
+        return (sum % 11) === checkDigit;
+    }
+    
+    if(n == 13){
+        for(let i = 0; i < 12; i++) {
+            const digit = parseInt(isbn[i], 10);
+            if (isNaN(digit)) return false;
+            sum += (i % 2 == 0) ? digit : digit * 3;
+        }
+        const checkDigit = parseInt(isbn[12], 10);
+        if (isNaN(checkDigit)) return false;
+        console.log(checkDigit)
+        return checkDigit === (10 - (sum % 10)) % 10;
+    }
+
+    return false;
+}
+
+app.post("/book", async (req, res) => {
+    const title = req.body.title;
+    const author = req.body.author;
+    const isbn = req.body.isbn;
+    const summary = req.body.summary;
+    console.log(req.body);
+
+    if (isValidISBN(String(isbn))){
+        console.log("Valid ISBN number");
+        await db.query("INSERT INTO books (title, author, isbn, summary) VALUES ($1, $2, $3, $4);",
+        [title, author, String(isbn), summary]
+        );
+    } 
+    else{
+        console.log("Yooo invalid cuh");
+        return res.render("error.ejs", { message: "Invalid ISBN" });
+    }
+
+    res.redirect("/book");
+});
+
+// Quote Page
 const Design_API = "";
 const Anime_API = "https://animechan.io/api/v1/quotes/random";
 const Zen_API = "https://zenquotes.io/api/random";

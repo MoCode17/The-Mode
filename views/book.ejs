@@ -12,27 +12,33 @@
     <form action="/book" method="post" id="bookForm" class="hidden w-50 p-4 border rounded bg-light shadow">
         <div class="mb-3 text-center">
             <label for="book-title" class="form-label fw-bold">Book Title:</label>
-            <input type="text" required autocomplete="off" class="form-control rounded-pill text-center">
+            <input type="text" required autocomplete="off" name="title" class="form-control rounded-pill text-center">
         </div>
         <div class="mb-3 text-center">
             <label for="book-author" class="form-label fw-bold">Author:</label>
-            <input type="text" required autocomplete="off" class="form-control rounded-pill text-center">
+            <input type="text" required autocomplete="off" name="author" class="form-control rounded-pill text-center">
         </div>
         <div class="mb-3 text-center">
-            <label for="book-ISSB" class="form-label fw-bold">ISSB:</label>
-            <input type="text" required autocomplete="off" class="form-control rounded-pill text-center">
+            <label for="book-ISBN" class="form-label fw-bold">ISBN:</label>
+            <input type="text" required autocomplete="off" name="isbn" class="form-control rounded-pill text-center">
         </div>
         <div class="mb-3 text-center">
             <label for="book-summary" class="form-label fw-bold">Summary notes:</label>
-            <textarea name="content" required rows="5" autocomplete="off" class="form-control text-center"></textarea>
+            <textarea name="summary" required rows="5" autocomplete="off" class="form-control text-center"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success rounded-pill px-4">Submit Summary</button>
         </div>
     </form>
 </div>
 
 <div class="container text-center a-grid " style="width: 80vw">
     <div class="mb-4 d-flex flex-wrap gap-5">
-        
-        <img src="https://covers.openlibrary.org/b/isbn/9780385533225-L.jpg" class="book-cover"/>
+        <% book.forEach((book) => { %>
+            <a href="/book/<%= book.id %>" class="book-cover">
+                <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" class="book-cover" alt="No book cover found"/>
+            </a>
+        <% }); %>
     </div>
 </div>
 
