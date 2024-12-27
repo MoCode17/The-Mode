@@ -252,3 +252,7 @@ button:hover#zen-regen {
     transform: translateY(-3px);
 }
 
+.book-cover{
+    object-fit: contain;
+    height: 280px;
+}
