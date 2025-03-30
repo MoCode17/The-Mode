@@ -120,6 +120,33 @@ app.get("/book/:id", async (req, res) => {
     res.render("book-detail", { book: book });
 });
 
+// Update a book
+app.post("/book/edit/:id", async (req, res) => {
+    const { title, author, isbn, summary } = req.body;
+    const id = req.params.id;
+    console.log(title, author, isbn, id);
+
+    if (isValidISBN(String(isbn))){
+        console.log("Valid ISBN number");
+        try{
+            await db.query(
+                "UPDATE books SET title = $1, author = $2, isbn = $3, summary = $4 WHERE id = $5",
+                [title, author, isbn, summary, id]
+                );
+                res.redirect("/book");
+            }
+        catch(err){
+            console.error("Error updating database: ", err);
+            res.status(500).send("Failed to update book");
+        }
+    } 
+    else{
+        console.log("Yooo invalid cuh");
+        return res.render("error.ejs", { message: "Invalid ISBN" });
+    }
+});
+
+// This function makes sure the book isbn is right for the api to show a cover
 function isValidISBN(isbn) {
     // isbn must be string type
     // length must be 10 or 13
@@ -161,6 +188,7 @@ function isValidISBN(isbn) {
     return false;
 }
 
+// Create Book
 app.post("/book", async (req, res) => {
     const title = req.body.title;
     const author = req.body.author;
@@ -170,16 +198,38 @@ app.post("/book", async (req, res) => {
 
     if (isValidISBN(String(isbn))){
         console.log("Valid ISBN number");
-        await db.query("INSERT INTO books (title, author, isbn, summary) VALUES ($1, $2, $3, $4);",
-        [title, author, String(isbn), summary]
-        );
+        try{
+            await db.query("INSERT INTO books (title, author, isbn, summary) VALUES ($1, $2, $3, $4);",
+            [title, author, String(isbn), summary]
+            );
+            res.redirect("/book");
+        }
+        catch(err){
+            console.error("Error updating database: ", err);
+            res.status(500).send("Failed to Add book");
+        }
     } 
     else{
         console.log("Yooo invalid cuh");
-        return res.render("error.ejs", { message: "Invalid ISBN" });
+        res.render("error.ejs", { message: "Invalid ISBN" });
     }
 
-    res.redirect("/book");
+    
+});
+
+// Delete
+app.post("/book/delete/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try{
+        console.log("im here");
+        await db.query("DELETE FROM books WHERE id=$1", [id]);
+        res.redirect("/book");
+    }
+    catch(err){
+        console.error("Error: ", err);
+        res.status(500).send("Failed to update book");
+    }
 });
 
 // Quote Page

@@ -252,16 +252,28 @@ button:hover#zen-regen {
     transform: translateY(-3px);
 }
 
+
 .book-cover{
     position: relative;
-    object-fit: cover;
-    height: 280px;
+    height: 333px;
+    width: 206px;
     overflow: hidden;
+    border: 2px solid blue;
     border-radius: 5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-cover img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    display: block;
+    
 }
 
 .book-cover:hover{
@@ -284,4 +296,46 @@ button:hover#zen-regen {
 
 .book-cover:hover::after {
     opacity: 1;
+}
+
+.book-actions{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.book-cover:hover .book-actions {
+    opacity: 1;
+}
+
+.btn{
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.edit-btn{
+    background-color: #2575fc;
+    color: white;
+}
+.edit-btn:hover{
+    background-color: #22488b;
+    color: rgb(155, 149, 149);
+}
+
+.delete-btn{
+    background-color: red;
+    color: white;
+}
+.delete-btn:hover{
+    background-color: rgb(148, 16, 16);
+    color: rgb(141, 139, 139);
 }
